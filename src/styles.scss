@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.product-name, .product-price {
+	margin-right: 40px;
+}
+.header {
+	font-weight: bold;
+}
+
+.btn-container {
+	button {
+		margin-right: 10px;
+	}
+}
+
+li {
+	margin-bottom: 10px;
+}

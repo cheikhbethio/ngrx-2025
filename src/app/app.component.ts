@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectBasketCount, selectBasketTotal } from './store/selectors/basket.selectors';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'ngrxTuto1';
+	title = 'NGRX';
+	store = inject(Store);
+	total$ = this.store.select(selectBasketTotal);
+	count$ = this.store.select(selectBasketCount);
+
 }

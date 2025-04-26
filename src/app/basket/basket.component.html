@@ -1,0 +1,25 @@
+<h1 style="margin-bottom: 50px;">Basket</h1>
+
+<ul class="product-list">	
+	<div class="row">
+		<div class="col-6 header">
+			<span class="product-name">Name</span>
+			<span class="product-price">Price</span>
+		</div>
+	</div>
+		<hr>
+	@for (product of products$ | async; track product.id) {
+		<li class="row">
+			<div class="col-6"> 
+				<span class="product-name">{{ product.name }}</span>
+				<span class="product-price">{{ product.price }}</span>
+			</div>
+			<div class="col-6 btn-container">
+				<button type="button" class="btn btn-secondary" [routerLink]="['/stock', product.id]">Infos</button>
+				<button type="button" class="btn btn-danger" (click)="removeFromBasket(product)">Remove</button>
+			</div>
+		</li>
+		<hr>
+	}
+</ul>
+ 
