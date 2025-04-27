@@ -1,9 +1,8 @@
-import { AppState } from "../reducers";
-import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { BasketState } from "../reducers";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { Product } from "../../types";	
 
-export const selectBasketFeatureState = createFeatureSelector<AppState, BasketState>('basketState');
+export const selectBasketFeatureState = createFeatureSelector<BasketState>('basketState');
 
 export const selectBasket = createSelector(
 	selectBasketFeatureState,

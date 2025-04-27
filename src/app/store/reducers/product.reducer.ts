@@ -1,6 +1,6 @@
 import { ProductsState } from "./reducers.type";
 import {  createReducer, on } from '@ngrx/store';
-import * as AppActions from '../actions/app.actions'; // Use alias for clarity
+import { ProductActions } from '../actions/product.actions'; // Updated import
 import { produce } from 'immer';
 
 export const initialProductsState: ProductsState = {
@@ -14,15 +14,19 @@ export const initialProductsState: ProductsState = {
 // Reducer for the products slice
 export const productsReducer = createReducer(
 	initialProductsState,
-	on(AppActions.loadProducts, (state) => state),
-		on(AppActions.addProduct, (state, { product }) => produce(state, (draft) => {
-			draft.products.push(product);
-		})),
-	on(AppActions.removeProduct, (state, { productId }) => produce(state, (draft) => {
+	// Handle success/failure actions if implementing async logic
+	on(ProductActions.loadProductsSuccess, (state, { products }) => produce(state, (draft) => {
+		draft.products = products; // Assuming load success replaces current products
+	})),
+	// on(ProductActions.loadProducts, (state) => state), // Keep if needed for loading state
+	on(ProductActions.addProduct, (state, { product }) => produce(state, (draft) => {
+		draft.products.push(product);
+	})),
+	on(ProductActions.removeProduct, (state, { productId }) => produce(state, (draft) => {
 		draft.products = draft.products.filter((p) => p.id !== productId);
 	})),
-	
-	on(AppActions.updateProduct, (state, {product}) => produce(state, (draft) => {
+
+	on(ProductActions.updateProduct, (state, {product}) => produce(state, (draft) => {
 		const index = draft.products.findIndex((p) => p.id === product.id);
 		if (index !== -1) {
 			draft.products[index] = product;

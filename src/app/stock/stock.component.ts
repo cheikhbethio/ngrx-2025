@@ -5,8 +5,8 @@ import { AppState } from '../store/reducers';
 import { selectAllProducts } from '../store/selectors/product.selectors';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Product } from '../types';
-import * as ProductActions from '../store/actions/app.actions';
-
+import { BasketActions } from '../store/actions/basket.actions';
+import { ProductActions } from '../store/actions/product.actions';
 @Component({
   selector: 'app-stock',
   standalone: true,
@@ -45,6 +45,6 @@ export class StockComponent {
 	}
 
 	addToBasket(product: Product) {
-		this.store.dispatch(ProductActions.addToBasket({ product }));
+		this.store.dispatch(BasketActions.addToBasket({ product }));
 	}
 }

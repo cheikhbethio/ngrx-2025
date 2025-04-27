@@ -1,6 +1,6 @@
 import {  createReducer, on } from '@ngrx/store';
 import { BasketState } from './reducers.type';
-import * as AppActions from '../actions/app.actions'; // Use alias for clarity
+import { BasketActions } from '../actions/basket.actions'; // Updated import
 import { produce } from 'immer';
 
 
@@ -12,10 +12,11 @@ export const initialBasketState: BasketState  = {
 // Reducer for the basket slice
 export const basketReducer = createReducer(
 	initialBasketState,
-	on(AppActions.addToBasket, (state, { product }) => produce(state, (draft) => {
+	on(BasketActions.addToBasket, (state, { product }) => produce(state, (draft) => {
 			draft.basket.push(product);
-		})),
-	on(AppActions.removeFromBasket, (state, { product }) => produce(state, (draft) => {
+	})),
+	// Updated to use productId based on the action definition
+	on(BasketActions.removeFromBasket, (state, { product }) => produce(state, (draft) => {
 		draft.basket = draft.basket.filter((p) => p.id !== product.id);
 	}))
 );
