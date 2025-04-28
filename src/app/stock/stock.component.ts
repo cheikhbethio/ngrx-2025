@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { AppState } from '../store/reducers';
-import { selectAllProducts } from '../store/selectors/product.selectors';
+import { AppState } from '../core/store/reducers';
+import { selectAllProducts } from '../core/store/selectors/product.selectors';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Product } from '../types';
-import { BasketActions } from '../store/actions/basket.actions';
-import { ProductActions } from '../store/actions/product.actions';
+import { Product } from '../core/types';
+import { BasketActions } from '../core/store/actions/basket.actions';
+import { ProductActions } from '../core/store/actions/product.actions';
 @Component({
   selector: 'app-stock',
   standalone: true,

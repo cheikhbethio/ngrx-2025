@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../store/reducers';
-import { selectBasket} from '../store/selectors/basket.selectors';
+import { AppState } from '../core/store/reducers';
+import { selectBasket} from '../core/store/selectors/basket.selectors';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Product } from '../types';
-import { BasketActions } from '../store/actions';
+import { Product } from '../core/types';
+import { BasketActions } from '../core/store/actions';
 @Component({
   selector: 'app-basket',
   imports: [CommonModule, RouterModule],

@@ -7,10 +7,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/stock" routerLinkActive="active" ariaCurrentWhenActive="page">Stocks</a>
+          <a class="nav-link" routerLink="/admin/stock" routerLinkActive="active" ariaCurrentWhenActive="page">Stocks</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/basket" routerLinkActive="active" ariaCurrentWhenActive="page">Basket</a>
+          <a class="nav-link" routerLink="/admin/basket" routerLinkActive="active" ariaCurrentWhenActive="page">Basket</a>
         </li>
       </ul>
     </div>
@@ -19,11 +19,14 @@
 
 <main class="container mt-4">
 	<div class="row">
-		<section class="col-3 offset-9 section-height">
-					<h5 class="card-title">Basket</h5>
-					<span class="card-text">{{ count$ | async }} for {{ total$ | async }} €</span>
-					<button class="btn btn-primary "  style="margin-left: 30px;" routerLink="/basket">Go</button>
-		</section>
+		@if(authService.isAuthenticated() | async) {
+			<button class="btn btn-danger col-1" (click)="logout()">Logout</button>
+			<div class="col-3 offset-9 section-height">
+				<h5 class="card-title">Basket</h5>
+				<span class="card-text">{{ count$ | async }} for {{ total$ | async }} €</span>
+				<button class="btn btn-primary "  style="margin-left: 30px;" routerLink="/basket">Go</button>
+			</div>
+		}
 	</div>
 
 
