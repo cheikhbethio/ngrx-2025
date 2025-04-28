@@ -1,59 +1,72 @@
-# NgrxTuto1
+# Angular NgRx Tutorial Project
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+This project is a simple Angular application demonstrating the use of NgRx for state management, focusing on product listing, shopping basket, and user authentication features.
 
-## Development server
+## Key Features
 
-To start a local development server, run:
+*   Angular Framework
+*   NgRx for centralized state management (@ngrx/store)
+    *   Manages application state for products, basket, and authentication.
+*   Basic user authentication flow (login/logout).
+*   (Likely) Components for displaying products, managing the basket, and handling login.
 
-```bash
-ng serve
+## Prerequisites
+
+*   [Node.js](https://nodejs.org/) (which includes npm)
+*   [Angular CLI](https://angular.io/cli): `npm install -g @angular/cli`
+
+## Getting Started
+
+1.  **Clone the repository (if applicable):**
+    ```bash
+    git clone <your-repository-url>
+    cd <repository-directory>
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    ng serve -o
+    ```
+    The application will be available at `http://localhost:4200/`.
+
+## Core Concepts
+
+*   **Angular:** The application is built using the Angular framework.
+*   **NgRx:** State management is handled using NgRx, following the Redux pattern (Actions, Reducers, Selectors, Store).
+    *   **State:** Defined in `src/app/core/store/reducers/reducers.type.ts`.
+    *   **Actions:** Trigger state changes (e.g., `src/app/core/store/actions/`).
+    *   **Reducers:** Handle state transitions based on actions.
+    *   **Selectors:** Retrieve specific pieces of state for components.
+*   **Services:** Angular services (`src/app/core/services/`) encapsulate business logic like authentication.
+
+## Project Structure (Partial)
+
+```
+src/
+├── app/
+│   ├── core/
+│   │   ├── services/       # Application-wide services (e.g., AuthService)
+│   │   ├── store/          # NgRx state management files
+│   │   │   ├── actions/
+│   │   │   ├── reducers/
+│   │   │   ├── selectors/
+│   │   │   └── effects/      # (If using @ngrx/effects)
+│   │   └── types/          # Core data types/interfaces
+│   ├── features/         # (Likely location for feature modules/components)
+│   │   ├── auth/
+│   │   ├── products/
+│   │   └── basket/
+│   ├── shared/           # Shared components, directives, pipes
+│   ├── app.component.ts    # Root application component
+│   ├── app.config.ts     # Main application configuration
+│   └── app.routes.ts     # Application routing
+├── assets/               # Static assets (images, etc.)
+└── environments/         # Environment configuration
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+*(Note: This structure might vary based on the actual project layout)*

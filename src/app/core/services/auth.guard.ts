@@ -22,18 +22,4 @@ export const authGuard: CanActivateFn = (route, state): Observable<boolean | Url
     })
   );
 
-  /*
-  // Example using NgRx Store:
-  const store = inject(Store); // Import Store from '@ngrx/store'
-  return store.select(selectIsAuthenticated).pipe( // Assuming selectIsAuthenticated selector exists
-     map(isAuth => {
-      if (isAuth) {
-        return true;
-      } else {
-        console.warn('User not authenticated, redirecting to login.');
-        return router.createUrlTree(['/home']);
-      }
-    })
-  );
-  */
 }; 

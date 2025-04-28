@@ -25,9 +25,9 @@ export class AuthService {
 			this.store.dispatch(AuthActions.login({ user: userPayload }));
 			return of(true);
 		}
-    return of(false).pipe(
-      tap(() => this.store.dispatch(AuthActions.logout()))
-    );
+    // Login failed
+    this.store.dispatch(AuthActions.logout());
+    return of(false);
   }
 
   logout(): void {
@@ -35,14 +35,5 @@ export class AuthService {
     this.store.dispatch(AuthActions.logout());
 		this.router.navigate(['/home']);
   }
-
-  /*
-  private checkInitialAuthStatus(): void {
-    // TODO: Implement logic to check if user is already logged in
-    // (e.g., check for token in localStorage)
-    const hasToken = !!localStorage.getItem('authToken'); // Example
-    this.isAuthenticatedSubject.next(hasToken);
-  }
-  */
 
 } 
